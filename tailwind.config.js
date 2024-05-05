@@ -17,7 +17,19 @@ module.exports = {
       }
     },
     extend: {
+      fontFamily: {
+        inter: ["Inter", 'sans-serif'],
+      },
+
       colors: {
+        "shopii-black-900": "#0E1422",
+        "shopii-black-800": "#202533",
+        "shopii-black-600": "#474B57",
+        "shopii-black-500": "#5C5F6A",
+        "shopii-black-300": "#878A92",
+        "shopii-black-100": "#E6E7E8",
+        "shopii-white-100": "#F6F6F6",
+        "shopii-white-200": "#E9E9EB",
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',

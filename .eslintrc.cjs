@@ -19,7 +19,7 @@ module.exports = {
       { allowConstantExport: true },
     ],
     'no-console': 'warn',
-    'comma-dangle': 'warn',
+    'comma-dangle': 'off',
     'linebreak- style': 'off', // enforces
     'react/prop-types': "warn"
   },
