@@ -1,16 +1,41 @@
 import { useParams } from 'react-router-dom';
+import { Button } from '../components/ui/button';
+import { useState } from 'react';
+import { cn } from '../lib/utils';
 import { products } from '../lib/data';
 import share from '../assets/icons/Share.png';
 import star from '../assets/icons/Star.png';
 import heart from '../assets/icons/Heart.png';
-import { Button } from '../components/ui/button';
-import { useState } from 'react';
-import { cn } from '../lib/utils';
-import { Bold, Italic, Underline } from 'lucide-react';
+import copy_paste from '../assets/icons/copy-paste.png';
+import whatsapp from '../assets/icons/Whatsapp.png';
+import telegram from '../assets/icons/telegram.png';
+import instagram from '../assets/icons/Instagram.png';
+import pintrest from '../assets/icons/Pinterest.png';
+import facebook from '../assets/icons/Facebook.png';
+// import { Copy } from 'lucide-react';
 
-import { ToggleGroup, ToggleGroupItem } from '../components/ui/toggle-group';
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
+import { Input } from '../components/ui/input';
+import { Label } from '../components/ui/label';
+// import { Bold, Italic, Underline } from 'lucide-react';
+
+// import { ToggleGroup, ToggleGroupItem } from '../components/ui/toggle-group';
 import Review from '../components/Review';
 import SingleProduct from '../components/SingleProduct';
+import { WriteReview } from '../components/WriteReview';
+import Sort from '../components/Sort';
+import Sizes from '../components/Sizes';
+import Colour from '../components/Colour';
+import Counter from '../components/Counter';
 export default function Product() {
   const [showDetails, setShowDetails] = useState('details');
   const { id } = useParams();
@@ -30,7 +55,81 @@ export default function Product() {
             <h1 className="text-2xl font-bold capitalize text-shopii-black-900">
               {product_title}
             </h1>
-            <img src={share} alt=" share link or folder icon" />
+            {/*            <img src={share} alt=" share link or folder icon" />*/}
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="outline" className="border-none">
+                  <img src={share} alt=" share link or folder icon" />
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle className="mb-6 text-2xl font-bold text-shopii-black-900">
+                    Copy link
+                  </DialogTitle>
+                </DialogHeader>
+                <div className="flex items-center space-x-2">
+                  <div className="grid flex-1 gap-2">
+                    <Label htmlFor="link" className="sr-only">
+                      Link
+                    </Label>
+                    <Input
+                      id="link"
+                      defaultValue="https://ui.shadcn.com/docs/installation"
+                      readOnly
+                    />
+                  </div>
+                  <Button
+                    type="submit"
+                    size="sm"
+                    className="px-3"
+                    variant="outline"
+                  >
+                    <span className="sr-only">Copy</span>
+                    {/*
+                    <Copy className="h-4 w-4" />
+                  */}
+                    <img
+                      src={copy_paste}
+                      alt="copy and paste icon"
+                      className="h-4 w-4"
+                    />
+                  </Button>
+                </div>
+                <DialogFooter className="block sm:justify-start">
+                  <h2 className="mb-6 block text-2xl font-bold text-shopii-black-900">
+                    Share
+                  </h2>
+                  <div className=" flex items-center gap-4">
+                    <img
+                      src={whatsapp}
+                      className="h-6 w-6 cursor-pointer transition duration-300 hover:scale-110"
+                      alt="whatsapp icon "
+                    />
+                    <img
+                      src={pintrest}
+                      className="h-6 w-6 cursor-pointer transition duration-300 hover:scale-110"
+                      alt="pintrest icon"
+                    />
+                    <img
+                      src={telegram}
+                      className="h-6 w-6 cursor-pointer transition duration-300 hover:scale-110"
+                      alt="telegram icon "
+                    />
+                    <img
+                      src={facebook}
+                      className="h-6 w-6 cursor-pointer transition duration-300 hover:scale-110 "
+                      alt="facebook icon"
+                    />
+                    <img
+                      src={instagram}
+                      className="h-6 w-6 cursor-pointer transition duration-300 hover:scale-110"
+                      alt=" instagram icon"
+                    />
+                  </div>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
           </div>
           <div className=" mb-6 mt-3 flex items-center gap-4">
             <div className="  flex w-max items-center gap-4 rounded-[100px] bg-shopii-white-100 px-4 py-1">
@@ -50,9 +149,7 @@ export default function Product() {
             <p className="mb-[10px] text-sm font-medium uppercase text-shopii-black-500 ">
               Available Colors
             </p>
-            <div>
-              <div className="h-10 w-10 rounded-full bg-red-500 hover:border hover:border-green-500"></div>
-            </div>
+            <Colour />
           </div>
           {/* <ToggleGroup type="single" variant="outline">
             <ToggleGroupItem value="bold" aria-label="Toggle bold">
@@ -69,34 +166,13 @@ export default function Product() {
             <p className="mb-[10px] text-sm font-medium uppercase text-shopii-black-500">
               select size
             </p>
-            <div className="flex items-center gap-2 ">
-              <p className=" flex h-12 w-12 items-center justify-center rounded-sm border border-shopii-black-100 p-4 uppercase hover:border-shopii-black-900">
-                s
-              </p>
-              <p className=" flex h-12 w-12 items-center justify-center rounded-sm border border-shopii-black-100 p-4 uppercase  hover:border-shopii-black-900">
-                m
-              </p>
-              <p className=" flex h-12 w-12 items-center justify-center rounded-sm border border-shopii-black-100 p-4 uppercase hover:border-shopii-black-900 ">
-                xl
-              </p>
-              <p className=" flex h-12 w-12 items-center justify-center rounded-sm border border-shopii-black-100 p-4 uppercase hover:border-shopii-black-900">
-                xll
-              </p>
-            </div>
+            <Sizes />
           </div>
           <div className="mb-10 mt-8">
             <p className="mb-[10px] text-sm font-medium uppercase text-shopii-black-500">
               quantity
             </p>
-            <div className="flex w-[10.25rem] justify-between rounded-md border border-shopii-black-900 px-4 py-3">
-              <button className="text-lg font-medium text-shopii-black-500">
-                +
-              </button>
-              <p className="text-lg font-medium text-shopii-black-500">1</p>
-              <button className="text-lg font-medium text-shopii-black-500">
-                -
-              </button>
-            </div>
+            <Counter className={'w-[10.25rem] px-4 py-3'} />
           </div>
           <div className="grid grid-cols-[6fr_1fr] gap-6">
             <Button className="w-full">Add to cart</Button>
@@ -177,16 +253,15 @@ export default function Product() {
                   — 54 Reviews
                 </span>
               </div>
-              <Button variant={'outline'} className="border-shopii-black-900">
+              {/* <Button variant={'outline'} className="border-shopii-black-900">
                 {' '}
                 Write a review
-              </Button>
+              </Button> */}
+              <WriteReview />
               <div className="place-content-end text-right">
-                <select name="" id="" className="my-4 uppercase">
-                  <option value="">sort by </option>
-                </select>
+                <Sort />
               </div>
-              <div className="border-shopii-white-200 h-1 w-full border-b"></div>
+              <div className="h-1 w-full border-b border-shopii-white-200"></div>
               <div>
                 <Review />
                 <Review />

@@ -44,7 +44,7 @@ function Navbar() {
           </NavLink>
         </li>
         <li>
-          <select value={'hillld'} placeholder="jddshik">
+          <select value={'hillld'} placeholder="jddshik" onChange={() => {}}>
             <option>otionone</option>
           </select>
         </li>
@@ -81,7 +81,9 @@ function Navbar() {
             />
           </div>
         </form>
-        <img src={cart} alt="the cart icon" className="cursor-pointer" />
+        <Link to={'cart'}>
+          <img src={cart} alt="the cart icon" className="cursor-pointer" />
+        </Link>
         <img
           src={user}
           alt="the user icon"

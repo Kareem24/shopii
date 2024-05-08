@@ -8,6 +8,11 @@ import './api/api';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Product from './pages/Product';
+import Cart from './pages/Cart';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import ForgetPassword from './pages/ForgetPassword';
+import ResetPassword from './pages/ResetPassword';
 
 function App() {
   const route = createBrowserRouter([
@@ -34,6 +39,26 @@ function App() {
         {
           path: '/product/:id',
           element: <Product />,
+        },
+        {
+          path: '/cart',
+          element: <Cart />,
+        },
+        {
+          path: '/login',
+          element: <Login />,
+        },
+        {
+          path: '/sign-up',
+          element: <Signup />,
+        },
+        {
+          path: '/forget-password',
+          element: <ForgetPassword />,
+        },
+        {
+          path: '/reset-password',
+          element: <ResetPassword />,
         },
       ],
     },

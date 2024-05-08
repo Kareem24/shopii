@@ -100,7 +100,7 @@ function Footer() {
           </div>
         </div>
         <div className="px-6 pb-8 text-center md:px-20">
-          <div className="border-shopii-white-200 mb-6 mt-24 h-1 w-full border-b"></div>
+          <div className="mb-6 mt-24 h-1 w-full border-b border-shopii-white-200"></div>
           <small className="text-sm text-shopii-black-300">
             © 2023 DevCut. All rights reserved.
           </small>
