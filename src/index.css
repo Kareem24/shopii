@@ -73,4 +73,7 @@
   body {
     @apply bg-background text-foreground;
   }
+  .profile .active {
+    @apply rounded-md bg-secondary;
+  }
 }
