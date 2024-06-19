@@ -12,7 +12,7 @@ import Products from '@/components/ui/Products';
 import { products } from '@/lib/data';
 
 function Home() {
-  const [productList, setProductList] = useState('latest');
+  // const [productList, setProductList] = useState('latest');
   return (
     <>
       <main className="bg-shopii-white-100 px-6 py-12 md:px-20">

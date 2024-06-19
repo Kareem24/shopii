@@ -4,9 +4,11 @@ import { cn } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useMediaQuery } from '../hooks/useMediaQuery';
+
 import { Button } from './ui/button';
 import InputForm from './InputForm';
 import { useForm } from 'react-hook-form';
+
 import {
   Dialog,
   DialogContent,
@@ -28,11 +30,14 @@ import {
 
 import { Form } from './ui/form';
 import star from '../assets/icons/Stars.png';
+
 const reviewSchema = z.object({
   email: z.string().email(),
+
   fullName: z
     .string()
     .min(4, { message: 'Name must be at least 4 characters long' }),
+
   review: z
     .string({ required_error: 'please enter your event name' })
     .min(6, { message: 'review must be at least 6 characters long' }),
@@ -91,6 +96,7 @@ export function WriteReview() {
 function ProfileForm({ className = '' }: { className?: string | undefined }) {
   const form = useForm({
     resolver: zodResolver(reviewSchema),
+
     defaultValues: {
       email: '',
       fullName: '',

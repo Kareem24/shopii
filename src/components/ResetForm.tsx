@@ -13,10 +13,12 @@ const Schema = z
     password: z
       .string()
       .min(8, { message: 'password must be more than 8 characters long' })
+
       .regex(passwordRegex, {
         message:
           'password must contain at least one uppercase, one lowercase, one number and one special character',
       }),
+
     confirmPassword: z
       .string()
       .min(4, { message: 'password must be more than 4 characters long' }),
@@ -25,19 +27,17 @@ const Schema = z
     message: "Password don't match",
     path: ['confirmPassword'],
   });
+
 type ResetFormProps = {
   btnName: string;
   className?: string | undefined;
   btnClass?: string | undefined;
 };
 
-export default function ResetForm({
-  btnName,
-  className = '',
-  btnClass = '',
-}: ResetFormProps) {
+function ResetForm({ btnName, className = '', btnClass = '' }: ResetFormProps) {
   const form = useForm({
     resolver: zodResolver(Schema),
+
     defaultValues: {
       password: '',
       confirmPassword: '',
@@ -66,3 +66,4 @@ export default function ResetForm({
     </Form>
   );
 }
+export default ResetForm;

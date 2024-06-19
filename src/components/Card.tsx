@@ -3,6 +3,7 @@ type CardProps = {
   title: string;
   description: string;
 };
+
 const Card = ({ img, title, description }: CardProps) => {
   return (
     <div className="pr-11">

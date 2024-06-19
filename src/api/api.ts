@@ -4,7 +4,9 @@
 
 export async function fetchProducts(query: string) {
   if (!query) return;
+
   const url = `https://real-time-product-search.p.rapidapi.com/search?q=${query}&country=us&language=en`;
+
   const options = {
     method: 'GET',
     headers: {
@@ -14,5 +16,6 @@ export async function fetchProducts(query: string) {
   };
 
   const response = await fetch(url, options);
+
   return await response.json();
 }

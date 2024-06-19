@@ -7,7 +7,9 @@ export type ProductProps = {
   product_id: string;
   offer: { price: string };
 };
+
 type SingleProductProps = { product: ProductProps };
+
 function SingleProduct({ product }: SingleProductProps) {
   const {
     product_title,
@@ -15,6 +17,7 @@ function SingleProduct({ product }: SingleProductProps) {
     product_id,
     offer: { price },
   } = product;
+
   return (
     <div>
       <Link to={`product/${product_id}?${product_title}`}>
